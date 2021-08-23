@@ -1,0 +1,23 @@
+version: "3.9"
+
+services:
+  node:
+    build: .
+    restart: unless-stopped
+    environment:
+      - MONGO_URL=mongodb://db:27017
+    links:
+      - "db"
+    ports:
+      - "5000:3000"
+
+  db:
+    image: "mongo:4.4.4"
+    restart: unless-stopped
+    volumes:
+      - mongodb:/data/db
+    ports:
+      - "27017:27017"
+
+volumes:
+  mongodb:
