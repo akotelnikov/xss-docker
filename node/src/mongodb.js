@@ -1,7 +1,7 @@
 import { MongoClient } from 'mongodb';
 
 const {
-  MONGO_URL
+  MONGO_URL = 'mongodb://localhost:27017'
 } = process.env;
 
 // Create a new MongoClient

@@ -2,7 +2,10 @@ import http from 'http';
 import url from 'url';
 import { healthController } from './health-controller.js';
 
-const port = 3000;
+const {
+  PORT = 3000
+} = process.env;
+
 
 const routes = {
   '/health': healthController
@@ -20,6 +23,6 @@ http
     res.write('404');
     res.end();
   })
-  .listen(port, () => {
-    console.log(`Server running on port ${port}`)
+  .listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`)
   });
